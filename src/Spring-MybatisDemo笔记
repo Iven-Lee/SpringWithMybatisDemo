@@ -1,0 +1,32 @@
+Spring+Mybatis
+整合思想：
+    使用Spring的IOC核心技术，把mybatis框架使用的对象交给spring统一创建和管理。
+    spring是容器，存放项目中要使用的各类对象。
+
+
+
+步骤：
+1.新建maven项目
+2.加入maven的依赖
+  1）测试依赖
+  2）spring依赖
+  3）spring的事务的依赖
+  4）mybatis依赖
+  5) mybatis和spring集成的依赖
+  6）mysql驱动
+  7）Druid连接池依赖:
+        阿里的Druid开源连接池依赖,与其他数据库连接池最大区别在于提供数据库的配置连接池
+  8）添加<resource>标签扫描.properties,.xml 文件
+3.创建实体类：（com.Iven.sqlName）SqlName.java
+4.创建dao接口：（com.Iven.dao）StudentDao.java和mapper文件:(com.Iven.dao)StudentDao.xml
+     1）dao层做数据库的增删改查
+5.创建mybatis主配置文件（resources目录下）：mybatis-config.xml
+6.创建Service接口（com.Iven.service）StudentService和实现类（com.Iven.service）StudentServiceImpl，属性是dao。
+     1）Service类做业务逻辑层，具体需要实现的业务
+7.创建spring的配置文件（applicationContext.xml）：声明mybatis的对象交给spring创建
+     1）数据源DataSource
+     2）SqlSessionFactory
+     3) Dao对象
+     4）声明自定义的service
+
+8.创建测试类，获取Service对象，通过service调用dao完成数据库的访问
